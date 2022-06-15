@@ -1,1 +1,1 @@
-# lean_python
+# learn_python
