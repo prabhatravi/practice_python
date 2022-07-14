@@ -121,6 +121,16 @@ class LinkedList:
 
         curr_1.next, curr_2.next = curr_2.next, curr_1.next
 
+    def reverse_iterative(self):
+        prev = None
+        cur = self.head
+
+        while cur:
+            next = cur.next
+            cur.next = prev
+            prev = cur
+            cur = next
+        self.head = prev
   
 llist = LinkedList()
 llist.append("A")
@@ -153,4 +163,7 @@ llist.print_list()
 
 llist.swap_nodes("C", "C")
 print("Swapping nodes C and C where both keys are same")
+llist.print_list()
+print("Reversed LL")
+llist.reverse_iterative()
 llist.print_list()
