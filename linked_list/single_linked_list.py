@@ -1,3 +1,6 @@
+from locale import currency
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -131,6 +134,18 @@ class LinkedList:
             prev = cur
             cur = next
         self.head = prev
+    
+    def reverse_recursive(self):
+        def _reverse_recursive(cur, prev):
+            if not cur:
+                return prev
+            nxt = cur.next
+            cur.next = prev
+            prev = cur
+            cur = nxt
+            return _reverse_recursive(cur, prev)
+
+        self.head = _reverse_recursive(cur=self.head, prev = None)
   
 llist = LinkedList()
 llist.append("A")
@@ -166,4 +181,8 @@ print("Swapping nodes C and C where both keys are same")
 llist.print_list()
 print("Reversed LL")
 llist.reverse_iterative()
+llist.print_list()
+print("Recursive reverse the LL")
+llist.reverse_recursive()
+
 llist.print_list()
