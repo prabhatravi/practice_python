@@ -104,10 +104,20 @@ class DoublyLinkedList:
                     cur = None
                     return
             cur = cur.next
+    def reverse(self):
+        tmp = None
+        cur = self.head
+        while cur:
+            tmp = cur.prev
+            cur.prev = cur.next
+            cur.next = tmp
+            cur = cur.prev
+        if tmp:
+            self.head = tmp.prev
 
 
 dllist = DoublyLinkedList()
-dllist.prepend(0)
+dllist.prepend(8)
 dllist.append(1)
 dllist.append(2)
 dllist.append(3)
@@ -120,3 +130,7 @@ dllist.delete(6)
 dllist.delete(4)
 
 dllist.print_list()
+print("Reverse the DLL")
+dllist.reverse()
+dllist.print_list()
+print("\n")
